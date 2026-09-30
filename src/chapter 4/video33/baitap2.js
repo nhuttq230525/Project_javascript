@@ -31,7 +31,15 @@ function xepLoai(diemTrungBinh) {
         case (diemTrungBinh >= 6.5 && diemTrungBinh < 8):
             return "kha"
         default:
-            return "trung binh"
+            return "trung binh"     
     }
 }
-console.log(xepLoai(tinhTrungBinh(diemToan, diemVan, diemAnh)))
+
+const myTB = tinhTrungBinh(diemToan,diemVan,diemAnh)
+
+// console.log(xepLoai(tinhTrungBinh(diemToan, diemVan, diemAnh)))
+
+console.log(`
+    Diem trung binh : ${myTB}
+    Xep loai : ${xepLoai(myTB)}
+`);
