@@ -62,7 +62,7 @@ input:focus {
     box-shadow: 0 0 5px rgba(13, 110, 253, 0.2);
 }
 
-/* Nút thêm */
+/* Nút thêm,sửa */
 button {
     display: block;
     margin: 25px auto 30px;

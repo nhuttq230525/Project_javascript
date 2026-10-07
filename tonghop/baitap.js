@@ -7,6 +7,7 @@ const studentIdInput = document.getElementById("studentId");
 const emailInput = document.getElementById("email");
 const classNameInput = document.getElementById("className");
 const addButton = document.getElementById("addBtn");
+const updateButton = document.getElementById("updateBtn");
 const search = document.getElementById("searchInput");
 const table = document.getElementById("studentList");
 
@@ -21,6 +22,7 @@ const confirmDelete = document.getElementById("confirmDelete");
 
 // Lưu ID sinh viên đang muốn xóa
 let studentIdToDelete = null;
+let studentIdToEdit = null;
 
 
 // 3. DANH SÁCH SINH VIÊN
@@ -67,21 +69,22 @@ function displayStudents() {
                 <td>${student.className}</td>
 
                 <td>
-                    <button class="edit-btn">
-                        Sửa
-                    </button>
+                        <button class="edit-btn" data-id="${student.id}">
+                            Sửa
+                        </button>
 
-                    <button class="delete-btn" data-id="${student.id}">
-                        Xóa
-                    </button>
-                </td>
+                        <button class="delete-btn" data-id="${student.id}">
+                            Xóa
+                        </button>
+                    </td>
             </tr>
         `;
     });
 
 
-    // Lấy các nút Xóa
+    // Lấy các nút Xóa,Sửa
     const deleteBtn = document.querySelectorAll(".delete-btn");
+    const editBtn = document.querySelectorAll(".edit-btn");
 
 
     // Gắn sự kiện cho từng nút Xóa
@@ -98,7 +101,29 @@ function displayStudents() {
         });
 
     });
+
+    // Gắn sự kiện tungwf nút sửa
+    editBtn.forEach(function (button) {
+
+        button.addEventListener("click", function () {
+
+            studentIdToEdit = button.dataset.id
+            console.log(studentIdToEdit)
+
+            // Tim svien de sua
+            const student = students.find(function (student) {
+                return student.id === studentIdToEdit;
+            })
+            //Dua du lieu len form
+
+            nameInput.value = student.name;
+            studentIdInput.value = student.id;
+            emailInput.value = student.email;
+            classNameInput.value = student.className;
+        })
+    })
 }
+
 
 
 
@@ -131,9 +156,26 @@ addButton.addEventListener("click", function () {
     alert("Bạn đã thêm sinh viên thành công");
 });
 
+// Xử lý nút cập nhật
+updateButton.addEventListener("click", function () {
+
+    const student = students.find(function (student) {
+        return student.id === studentIdToEdit;
+    });
+
+    student.id = studentIdInput.value;
+    student.name = nameInput.value;
+    student.email = emailInput.value;
+    student.className = classNameInput.value;
+
+    displayStudents();
+
+    alert("Cập nhật sinh viên thành công");
+    studentIdToEdit = null;
+})
 
 
-// 7. NÚT HỦY XÓA
+//  NÚT HỦY XÓA
 
 
 cancelDelete.addEventListener("click", function () {
@@ -146,7 +188,7 @@ cancelDelete.addEventListener("click", function () {
 
 
 
-// 8. NÚT XÁC NHẬN XÓA
+//  NÚT XÁC NHẬN XÓA
 
 
 confirmDelete.addEventListener("click", function () {
@@ -166,3 +208,6 @@ confirmDelete.addEventListener("click", function () {
     studentIdToDelete = null;
 
 });
+
+
+
