@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Quản lý sinh viên</title>
+
+    <script src="baitap.js" defer></script>
+    <link rel="stylesheet" href="baitap.css">
+</head>
+
+<body>
+
+    <header class="header">
+        QUẢN LÝ SINH VIÊN
+    </header>
+
+    <div class="all">
+
+        <div class="allform">
+
+            <!-- Họ tên -->
+            <div class="form">
+                <label>Họ Tên :</label>
+                <input type="text" id="name" placeholder="Nhập họ tên">
+            </div>
+
+            <!-- MSSV -->
+            <div class="form">
+                <label>Mã sinh viên :</label>
+                <input type="text" id="studentId" placeholder="Nhập mã sinh viên">
+            </div>
+
+            <!-- Email -->
+            <div class="form">
+                <label>Email :</label>
+                <input type="email" id="email" placeholder="Nhập email">
+            </div>
+
+            <!-- Lớp -->
+            <div class="form">
+                <label>Lớp :</label>
+                <input type="text" id="className" placeholder="Nhập tên lớp">
+            </div>
+
+            <!-- Button -->
+            <button id="addBtn">
+                Thêm sinh viên
+            </button>
+
+            <!-- Tìm kiếm -->
+            <div class="search">
+                <label>Tìm kiếm :</label>
+                <input type="text" id="searchInput" placeholder="Tìm kiếm">
+            </div>
+
+            <!-- Bảng -->
+            <div class="table">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>MSSV</th>
+                            <th>Họ tên</th>
+                            <th>Email</th>
+                            <th>Lớp</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="studentList">
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="deletePopup" class="popup">
+
+        <div class="popup-content">
+
+            <h2>Xác nhận xóa</h2>
+
+            <p>Bạn có chắc chắn muốn xóa sinh viên này không?</p>
+
+            <div class="popup-buttons">
+                <button id="cancelDelete">Hủy</button>
+                <button id="confirmDelete">Xóa</button>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
