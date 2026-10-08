@@ -55,11 +55,11 @@ let students = [
 // 4. HIỂN THỊ SINH VIÊN
 
 
-function displayStudents() {
+function displayStudents(list = students) {
 
     table.innerHTML = "";
 
-    students.forEach(function (student) {
+    list.forEach(function (student) {
 
         table.innerHTML += `
             <tr>
@@ -102,7 +102,7 @@ function displayStudents() {
 
     });
 
-    // Gắn sự kiện tungwf nút sửa
+    // Gắn sự kiện tung nút sửa
     editBtn.forEach(function (button) {
 
         button.addEventListener("click", function () {
@@ -209,5 +209,20 @@ confirmDelete.addEventListener("click", function () {
 
 });
 
+// includes(keyword) (ktra xemm chuỗi có chứa nội dung cần kiếm tra hay ko)
+// tao function tim kiem
 
+function searchStudents() {
+    const keyword = search.value.toLowerCase().trim()
+
+    const result = students.filter(function (student) {
+        return student.name.toLocaleLowerCase().includes(keyword)
+            || student.id.toLocaleLowerCase().includes(keyword)
+    })
+
+    displayStudents(result);
+}
+search.addEventListener("input", function () {  
+    searchStudents();
+})
 
